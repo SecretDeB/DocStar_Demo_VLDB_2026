@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "common.num-threads",
+    "type": "java.lang.String",
+    "description": "A description for 'common.num-threads'"
+  },
+  {
+    "name": "common.server-verification",
+    "type": "java.lang.String",
+    "description": "A description for 'common.server-verification'"
+  },
+  {
+    "name": "common.client-verification",
+    "type": "java.lang.String",
+    "description": "A description for 'common.client-verification'"
+  },
+  {
+    "name": "common.server-ips",
+    "type": "java.lang.String",
+    "description": "A description for 'common.server-ips'"
+  },
+  {
+    "name": "common.server-ports",
+    "type": "java.lang.String",
+    "description": "A description for 'common.server-ports'"
+  },
+  {
+    "name": "common.client-ip",
+    "type": "java.lang.String",
+    "description": "A description for 'common.client-ip'"
+  },
+  {
+    "name": "common.client-port",
+    "type": "java.lang.String",
+    "description": "A description for 'common.client-port'"
+  },
+  {
+    "name": "common.opt-col",
+    "type": "java.lang.String",
+    "description": "A description for 'common.opt-col'"
+  },
+  {
+    "name": "common.opt-row",
+    "type": "java.lang.String",
+    "description": "A description for 'common.opt-row'"
+  },
+  {
+    "name": "common.file-count",
+    "type": "java.lang.String",
+    "description": "A description for 'common.file-count'"
+  },
+  {
+    "name": "common.keyword-count",
+    "type": "java.lang.String",
+    "description": "A description for 'common.keyword-count'"
+  },
+  {
+    "name": "common.checkpoint1",
+    "type": "java.lang.String",
+    "description": "A description for 'common.checkpoint1'"
+  }
+]}

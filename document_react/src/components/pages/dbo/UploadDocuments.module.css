@@ -1,0 +1,781 @@
+/* UploadDocuments.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #03045e;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+/* Section Containers */
+.section {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+
+.sectionDescription {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Keyword Input */
+.keywordInput {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #111827;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #03045e;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background-color: #03045e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, background-color 0.2s;
+  white-space: nowrap;
+}
+
+.addButton:hover {
+  background-color: #0b0c6a;
+  transform: scale(1.05);
+}
+
+/* Keyword List */
+.keywordList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 1rem 0;
+}
+
+.keywordTag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: #eef2ff;
+  border: 1px solid #03045e;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #03045e;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.keywordTag:hover {
+  background-color: #ddd6fe;
+  transform: translateY(-2px);
+}
+
+.keywordTag span {
+  user-select: none;
+}
+
+.removeKeyword {
+  cursor: pointer;
+  color: #ef4444;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.removeKeyword:hover {
+  color: #dc2626;
+  transform: scale(1.2);
+}
+
+/* Upload Button */
+.uploadButton {
+  width: 60%;
+  max-width: 800px;
+  background-color: #03045e;
+  color: white;
+  font-weight: 600;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.uploadButton:hover:not(:disabled) {
+  background-color: #0b0c6a;
+  transform: scale(1.02);
+}
+
+.uploadButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading State */
+.uploading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .section,
+  .uploadButton {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .keywordInput {
+    flex-direction: column;
+  }
+
+  .addButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Keyword Controls */
+.keywordControls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.controlButton {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #03045e;
+  color: #03045e;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.controlButton:hover {
+  background-color: #03045e;
+  color: white;
+}
+
+/* Keyword Tag - Clickable */
+.keywordTag {
+  cursor: pointer;
+  user-select: none;
+}
+
+.keywordTag.selected {
+  background-color: #03045e;
+  color: white;
+  border-color: #03045e;
+}
+
+.checkIcon {
+  color: white;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 60%;
+  max-width: 800px;
+}
+
+.backButton,
+.submitButton {
+  flex: 1;
+  max-width: 200px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  font-size: 1rem;
+}
+
+.backButton {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.backButton:hover {
+  background-color: #d1d5db;
+}
+
+.submitButton {
+  background-color: #03045e;
+  color: white;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #0b0c6a;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dragging state */
+
+.userList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.userCard:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.userCard.selected {
+  background-color: #03045e;
+  border-color: #03045e;
+  color: white;
+}
+
+.userCard.selected .userEmail {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  color: white;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.progressBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.progressStep.active {
+  opacity: 1;
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.progressStep.active .stepNumber {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.stepLabel {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.progressStep.active .stepLabel {
+  color: #03045e;
+  font-weight: 600;
+}
+
+.progressLine {
+  width: 80px;
+  height: 2px;
+  background: #e5e7eb;
+  margin: 0 16px;
+}
+
+/* Info Button */
+.infoButton {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.infoButton:hover {
+  background: #eef2ff;
+}
+
+/* Error Badge */
+.errorBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #c53030;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #fff5f5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #feb2b2;
+}
+
+/* Dialog Overlay */
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dialogBox {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialogHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dialogHeader h2 {
+  margin: 10px 0 0 0;
+  color: #1a202c;
+  font-size: 1.5rem;
+}
+
+.confirmIcon {
+  color: #667eea;
+}
+
+.successIcon {
+  color: #48bb78;
+}
+
+.dialogStats {
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dialogStatRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #4a5568;
+}
+
+.dialogStatRow span {
+  font-size: 1.5rem;
+}
+
+.dialogNote {
+  font-size: 0.85rem;
+  color: #718096;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.dialogActions {
+  display: flex;
+  gap: 12px;
+}
+
+.cancelButton {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  background: white;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.confirmButton {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Info Overlay (Step 2 specific) */
+.infoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.infoBox {
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.infoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.infoIcon {
+  color: #667eea;
+}
+
+.closeInfo {
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.infoContent p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.infoNote {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Global Dialog Overlay */
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Darker backdrop */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  /* Highest Z-index */
+  animation: fadeIn 0.2s ease;
+}
+
+.dialogBox {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialogHeader {
+  margin-bottom: 24px;
+}
+
+.dialogHeader h2 {
+  font-size: 1.5rem;
+  color: #1a202c;
+  margin: 16px 0 0 0;
+}
+
+/* Icons */
+.confirmIcon {
+  color: #667eea;
+  background: #ebf4ff;
+  padding: 12px;
+  border-radius: 50%;
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.successIcon {
+  color: #48bb78;
+  background: #f0fff4;
+  padding: 12px;
+  border-radius: 50%;
+  width: 64px !important;
+  height: 64px !important;
+}
+
+/* Stats Section inside Dialog */
+.dialogStats {
+  background: #f7fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.dialogStats ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.dialogStats li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.dialogStats li:last-child {
+  border-bottom: none;
+}
+
+.dialogStatRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.dialogStatRow strong {
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.dialogNote {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Actions */
+.dialogActions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.cancelButton {
+  flex: 1;
+  padding: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.confirmButton {
+  flex: 1;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.confirmButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.dialogActions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  flex-direction: column;
+}

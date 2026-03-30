@@ -1,0 +1,30 @@
+.layoutContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #f9fafc;
+  transition: all 0.3s ease;
+}
+
+/* Content area */
+.mainContent {
+  flex: 1;
+  margin-left: 240px;
+  /* Expanded width of NavBar */
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.statsBarContainer {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* When collapsed, content slides left */
+.layoutContainer.collapsed .mainContent {
+  margin-left: 72px;
+  /* Match collapsed NavBar width */
+}

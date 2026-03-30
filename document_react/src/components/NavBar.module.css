@@ -1,0 +1,171 @@
+.navBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1e1e2f;
+  padding: 1.5rem 1rem;
+  width: 240px;
+  min-width: 240px;
+  height: 100%;
+  box-sizing: border-box;
+  color: #f1f1f1;
+  border-right: 1px solid #2d2d40;
+  transition: width 0.3s ease, padding 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Collapsed state */
+.collapsed {
+  width: 100px;
+  min-width: 100px;
+  padding: 1.5rem 0.5rem;
+}
+
+/* Top section */
+.topSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.logo a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.logo a,
+.userDetails,
+.link span {
+  transition: opacity 0.3s ease;
+}
+
+.book {
+  color: #4cc9f0;
+  /* soft cyan accent */
+  height: 28px;
+  width: 28px;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.toggleButton:hover {
+  color: #4cc9f0;
+  transform: scale(1.1);
+}
+
+/* Navigation links */
+.links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  background-color: #2a2a3d;
+  color: #ffffff;
+}
+
+.link.active {
+  background-color: #2f3a59;
+  color: #ffffff;
+  font-weight: 600;
+  border-left: 3px solid #4cc9f0;
+  /* subtle accent stripe */
+}
+
+/* When collapsed */
+.collapsed .link {
+  justify-content: center;
+  padding: 0.8rem;
+}
+
+.collapsed .link span,
+.collapsed .logo a,
+.collapsed .userDetails {
+  display: none;
+}
+
+/* User section */
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.userDetail {
+  color: #bcbcbc;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 5px;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #2a2a3d;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #3a3a50;
+  color: #ffffff;
+}
+
+/* Collapsed layout adjustments */
+.collapsed .logoutButton {
+  width: 80%;
+  padding: 0.6rem;
+}

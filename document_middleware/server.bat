@@ -1,0 +1,1 @@
+java -Xms1g -Xmx12g -D"com.sun.management.jmxremote=false" -cp "documentms/target/classes;lib/*" com.springboot.multiclient.ServerDispatcher %1

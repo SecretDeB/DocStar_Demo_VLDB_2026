@@ -1,0 +1,138 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 3rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  overflow-y: auto;
+}
+
+.pageHeader {
+  font-size: 2.5rem;
+  font-weight: 700;
+  align-self: center;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+/* Search Controls */
+.searchControls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 0.5rem;
+}
+
+.searchBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  padding: 12px 20px;
+  gap: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.searchBar:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #2d3748;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.searchInput::placeholder {
+  color: #a0aec0;
+}
+
+.searchBarActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton {
+  color: #667eea;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  background-color: #eef2ff;
+  transform: scale(1.1);
+}
+
+.verificationControl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.verificationLabel {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+/* States */
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.infoContainer {
+  text-align: center;
+  padding: 60px 40px;
+  font-size: 2rem;
+  color: #718096;
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0.5rem auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.errorContainer {
+  color: #e53e3e;
+  font-weight: 600;
+  background: #fff5f5;
+  border: 2px solid #fc8181;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 1.5rem;
+  }
+
+  .searchControls {
+    flex-direction: column;
+  }
+}

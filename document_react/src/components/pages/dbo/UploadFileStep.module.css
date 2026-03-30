@@ -1,0 +1,319 @@
+.section {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    /* border-bottom: 1px solid #e5e7eb; */
+    /* padding-bottom: 0.75rem; */
+}
+
+.sectionDescription {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* ✅ Warning Banner */
+.warningBanner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #856404;
+}
+
+/* ✅ Mode Toggle */
+.uploadModeToggle {
+    display: flex;
+    gap: 12px;
+    /* margin-bottom: 8px; */
+}
+
+.modeButton {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modeButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.modeButton:hover:not(:disabled) {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.modeButton.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.modeButtonText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.modeButtonText span {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.modeButtonText small {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+/* File Input Area */
+.fileInputLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 2rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.fileInputLabel:hover {
+    background-color: #eef2ff;
+    border-color: #03045e;
+    transform: scale(1.02);
+}
+
+.fileInputLabel span {
+    color: #6b7280;
+    margin-top: 0.75rem;
+    font-weight: 500;
+}
+
+.fileInput {
+    display: none;
+}
+
+/* ✅ ZIP Upload Styles */
+.zipInputLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+}
+
+.zipInputLabel:hover {
+    background-color: #eef2ff;
+    border-color: #667eea;
+    transform: scale(1.02);
+}
+
+.zipInputLabel span {
+    color: #374151;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.zipInputLabel small {
+    color: #6b7280;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.zipInfo {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f3f4f6;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.zipInfoContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.zipFileName {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #111827;
+    margin: 0;
+}
+
+.zipFileSize {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* File List */
+.fileList {
+    margin-top: 2rem;
+}
+
+.fileListTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.fileItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f3f4f6;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.fileItem:hover {
+    background-color: #e5e7eb;
+}
+
+.fileName {
+    flex: 1;
+    font-size: 1.5rem;
+    color: #111827;
+    font-weight: 500;
+}
+
+.fileSize {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.removeButton {
+    color: #ef4444;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.removeButton:hover {
+    color: #dc2626;
+    transform: scale(1.2);
+}
+
+
+/* Folder upload option */
+.uploadOptions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.folderInputLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.folderInputLabel:hover {
+    background-color: #eef2ff;
+    border-color: #03045e;
+    transform: scale(1.02);
+}
+
+.folderInputLabel span {
+    color: #6b7280;
+    margin-top: 0.75rem;
+    font-weight: 500;
+}
+
+.fileItems {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.fileInputLabel.dragging {
+    background-color: #eef2ff;
+    border-color: #03045e;
+    transform: scale(1.02);
+}
+
+.fileInputLabel.dragging span {
+    color: #03045e;
+    font-weight: 600;
+}
+
+.nextButton {
+    width: 60%;
+    max-width: 800px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    font-size: 1.5rem;
+    /* margin-top: 1rem; */
+}
+
+.nextButton:hover:not(:disabled) {
+    background-color: #0b0c6a;
+    transform: scale(1.02);
+}
+
+.nextButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}

@@ -1,0 +1,243 @@
+/* Overlay and Container */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  /* Allows clicking "under" the overlay if no background */
+  z-index: 1000;
+}
+
+.rndWrapper {
+  pointer-events: auto;
+  z-index: 1001;
+}
+
+.modalContainer {
+  background: white;
+  width: 100%;
+  height: 100%;
+  /* Fill the Rnd component */
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* Header Styling */
+.modalHeader {
+  padding: 10px 12px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: grab;
+  /* Visual hint */
+}
+
+.modalHeader:active {
+  cursor: grabbing;
+}
+
+.headerTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f0f5ff;
+  /* Light blue tint */
+  color: #667eea;
+  /* Primary purple-blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.documentTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.2;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: #f7fafc;
+  color: #e53e3e;
+}
+
+/* Body Styling */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Body Styling - Ensure it scrolls correctly when resized */
+.modalBody {
+  flex: 1;
+  background-color: #f7fafc;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* Prevent transitions from fighting the resize logic */
+.modalContainer,
+.modalBody,
+.paperSheet {
+  transition: none !important;
+}
+
+/* Paper Sheet Effect */
+.paperContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.paperSheet {
+  background: white;
+  width: 100%;
+  max-width: 8.5in;
+  /* Standard A4/Letter width */
+  min-height: 100%;
+  /* Fill at least the view */
+  padding: 48px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
+}
+
+.documentText {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  /* Serif for readability */
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #2d3748;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+/* Loading State */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #718096;
+  gap: 16px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Footer Styling */
+.modalFooter {
+  padding: 16px 24px;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.footerCloseButton {
+  padding: 10px 24px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #4a5568;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.footerCloseButton:hover {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+  color: #2d3748;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar Customization */
+.modalBody::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #edf2f7;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 5px;
+  border: 2px solid #edf2f7;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
