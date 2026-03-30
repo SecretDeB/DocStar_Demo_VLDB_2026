@@ -1602,6 +1602,13 @@ public class DBOServerParallel {
     public void revokeGrantAccessBatch()
             throws UnsupportedEncodingException, InterruptedException {
 
+        int keywordCountToProcess = (int) serverDispatcher.dboQueue.take().getPayload();
+
+        if (serverDispatcher.serverNumber <= 3) {
+            for (int i = 0; i < keywordCountToProcess; i++)
+                getAccessKeyword();// get access and index of keyword
+        }
+
         // waiting for server to send update access result
         byte[] temp1 = (byte[]) serverDispatcher.dboQueue.take().getPayload();
         if (temp1[0] == 0)
