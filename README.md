@@ -1,15 +1,16 @@
-<<<<<<< HEAD
-📋 Prerequisites
+# Prerequisites
 Before starting, ensure you have the following installed on your machine:
 
-Java Development Kit (JDK)
+## Java Development Kit (JDK)
 
 Ensure you have Java installed (JDK 17 or higher is recommended).
 
 Verify installation by opening a terminal and typing:
 
 java -version
-Node.js
+
+
+## Node.js
 
 For Node.js, go to https://nodejs.org/dist/v25.2.1/node-v25.2.1-x64.msi and run the installer,
 
@@ -20,11 +21,10 @@ Verify installation by typing:
 node -v
 npm -v
 
-We also need to install MySQL Server
+## MySQL Server
+You can find the download at https://dev.mysql.com/downloads/mysql/8.0.html.
 
-If you already have it installed replace the root password inside application.properties at path document_middleware/middleware/src/main/resources/application.properties 
-and change the property spring.datasource.password=YOUR_MYSQL_ROOT_PASSWORD
-
+If you already have it installed, replace the root password inside application.properties at path document_middleware/middleware/src/main/resources/application.properties and change the property spring.datasource.password=YOUR_MYSQL_ROOT_PASSWORD before running the middleware.
 
 After installing MySQL, open a terminal
 
@@ -32,72 +32,74 @@ mysql -u username -p
 
 Enter the password
 
-source document_middleware/INITIALIZE.sql
+Run source document_middleware/INITIALIZE.sql to create the database tables.
 
 
-🚀 Installation & Setup
+# Installation & Setup
 
-Step 1: Clone Repository
+## 1. Clone Repository
 
-Clone the repository using git clone https://github.com/SecretDeB/DocStar_Demo_VLDB_2026.git
+Clone the repository using "git clone https://github.com/SecretDeB/DocStar_Demo_VLDB_2026.git".
 
-Step 2: Backend Setup (Java)
+## 2. Backend Setup (Java)
 
-The backend requires running 4 distributed servers and the Main Spring Boot Application.
+The backend requires running 4 distributed servers and the middleware Spring Boot Application.
 
-Run these commands
+### Steps to start the Backend Servers
 
-cd document_java_server/server
-
-mvn clean install 
-
-cd target
-
-Open 4 separate terminals.
-
-Run the distributed servers in order using the following commands:
+1. Open a terminal in document_java_server/server.
+   
+2. Type the command "mvn clean install", to generate the jar file.
+   
+3. Now we need to go into the target folder by doing "cd target".
+   
+4. Open 3 additional terminals in the same directory (total 4 terminals).
+   
+5. Run the distributed servers in order using the following commands:
 
 Terminal 1:
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 1
+
+```java -jar -Xms1g -Xmx16g ./docstar_server.jar 1```
 
 Terminal 2:
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 2
+
+```java -jar -Xms1g -Xmx16g ./docstar_server.jar 2```
 
 Terminal 3:
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 3
+
+```java -jar -Xms1g -Xmx16g ./docstar_server.jar 3```
 
 Terminal 4:
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 4
+
+```java -jar -Xms1g -Xmx16g ./docstar_server.jar 4```
+
+## 3. Middleware Setup (Java)
+
+### Steps to start the Backend Servers
+
+1. Open a terminal in document_middleware/middleware.
+
+2. Run ```mvn clean install -DskipTests``` to create a jar file.
+
+3. Then move into target folder by running ```cd target```.
+
+4. Now we can start the middleware server by running ```java -jar -Xms1g -Xmx16g ./docstar_middleware.jar```.
 
 
-Step 3: Middleware Setup (Java)
+## 4. Frontend Setup (React)
 
-Run these commands
+1. Open a terminal in document_react.
 
-cd document_middleware/middleware
+2. Install required packages using npm install, and wait until it finishes.
 
-mvn clean install -DskipTests
+3. Now we can start the development server using ```npm run dev```
 
-cd target
-
-
-java -jar -Xms1g -Xmx16g ./docstar_middleware.jar
-
-
-Step 4: Frontend Setup (React)
-
-cd into document_react
-
-Install packages:
-npm install
-
-Start the development server:
-npm run dev
-
-Once started, open your browser and navigate to: http://localhost:5173
+Once started, open your browser and navigate to: ```http://localhost:5173```
 
 
 🔑 Login Credentials
+Make sure you set up the database as mentioned in the beginning.
+
 Use the following credentials to access the system.
 
 Admin Access
