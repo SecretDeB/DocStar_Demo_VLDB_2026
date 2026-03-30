@@ -9,54 +9,58 @@ Before starting, ensure you have the following installed on your machine:
 
 
 
-Open 4 separate terminal
-Terminal 1: Start frontend
+Open six separate terminals
 
-`
+In Terminal 1: Start frontend
+
+```bash
 cd DocStar_Demo_VLDB_2026/document_react
-
 npm i
+num run dev
+```
 
-num run dev `
+In Terminal 2: Start middleware
 
-Terminal 2: Start middleware
-
-`cd DocStar_Demo_VLDB_2026/document_middleware/middleware/
-
+```bash
+cd DocStar_Demo_VLDB_2026/document_middleware/middleware/
 mvn clean install
-
 cd target
+java -jar -Xms1g -Xmx16g ./docstar_middleware.jar
+```
 
-java -jar -Xms1g -Xmx16g ./docstar_middleware.jar `
+In Terminal 3: Start server 1
 
-Terminal 3: Start server
-
-`cd DocStar_Demo_VLDB_2026/document_java_server/server/
-
+```bash
+cd DocStar_Demo_VLDB_2026/document_java_server/server/
 mvn clean install
-
 cd target
+java -jar -Xms1g -Xmx16g ./docstar_server.jar 1
+```
 
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 1 `
+In Terminal 4: Start server 2
 
-Terminal 4: Start server
+```
+cd DocStar_Demo_VLDB_2026/document_java_server/server/target
+java -jar -Xms1g -Xmx16g ./docstar_server.jar 2
+```
 
-` cd DocStar_Demo_VLDB_2026/document_java_server/server/target
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 2 `
+In Terminal 5: Start server 3
 
-Terminal 5: Start server
+```bash
+cd DocStar_Demo_VLDB_2026/document_java_server/server/target
+java -jar -Xms1g -Xmx16g ./docstar_server.jar 3
+```
 
-` cd DocStar_Demo_VLDB_2026/document_java_server/server/target
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 3 `
+In Terminal 6: Start server 4
 
-Terminal 6: Start server
+```bash
+cd DocStar_Demo_VLDB_2026/document_java_server/server/target
+java -jar -Xms1g -Xmx16g ./docstar_server.jar 4
+```
 
-` cd DocStar_Demo_VLDB_2026/document_java_server/server/target
-java -jar -Xms1g -Xmx16g ./docstar_server.jar 4 `
+Now, open your browser. The interface should be accessible at `http://localhost:5173/`.
 
-Open browser:
-Login as DBO/client:
- ` http://localhost:5174/ `
+Log in as DBO/client to access the interface.
 
 
 
