@@ -23,7 +23,6 @@ function initializeLogin() {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(initializeUser);
-  const [sessionID, setSessionID] = useState(null);
 
   const [errors, setErrors] = useState({
     name: "",
@@ -45,7 +44,6 @@ function AuthProvider({ children }) {
       address: "",
       phone: "",
     }));
-    setSessionID(null);
   }
 
   async function resetErrors() {
@@ -153,8 +151,6 @@ function AuthProvider({ children }) {
       value={{
         user,
         setUser,
-        sessionID,
-        setSessionID,
         resetUser,
         isLoggedIn,
         setIsLoggedIn,

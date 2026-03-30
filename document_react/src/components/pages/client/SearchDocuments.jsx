@@ -17,7 +17,7 @@ import { SelectionProvider } from "src/context/SelectionContext";
 export default function SearchDocuments() {
   const { search: searchParam } = useParams();
   const navigate = useNavigate();
-  const { user, setSessionID } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [keyword, setKeyword] = useState(searchParam || "");
   const [documents, setDocuments] = useState(null);
@@ -26,6 +26,22 @@ export default function SearchDocuments() {
   const [error, setError] = useState("");
   const [verification, setVerification] = useState(false);
   const [searchTrigger, setSearchTrigger] = useState(0);
+  const [sessionID, setSessionID] = useState(null);
+
+  useEffect(() => {
+
+    return () => {
+      // Only attempt to close if we actually have a sessionID
+      if (sessionID) {
+        fetch(`http://localhost:8180/api/v1/documents/close/${sessionID}`, {
+          method: 'POST',
+          keepalive: true
+        }).catch(err => console.error("Failed to close session:", err));
+      }
+    };
+  }, [sessionID]);
+
+
 
   useEffect(() => {
     const controller = new AbortController();

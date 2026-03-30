@@ -328,7 +328,9 @@ public class ServerDispatcher {
 
                             if (activeSearches.containsKey(sessionId)) {
                                 System.out.println("Adding request to existing search session: " + sessionId);
-                                activeSearches.get(sessionId).getClientRequestQueue().offer(clientRequest);
+                                ServerMultiParallel session = activeSearches.get(sessionId);
+                                session.setClientOutputStream(out);
+                                session.getClientRequestQueue().offer(clientRequest);
                             } else {
                                 ServerMultiParallel serverMulti = new ServerMultiParallel(sessionId, this.serverNumber,
                                         this);

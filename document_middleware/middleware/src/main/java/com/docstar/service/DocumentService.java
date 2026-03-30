@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class DocumentService {
     private final int POOL_SIZE = 10;
     private final AtomicInteger roundRobin = new AtomicInteger(0);
 
-    private Map<String, SearchingClientParallel> clientMap = new LinkedHashMap<>();
+    private Map<String, SearchingClientParallel> clientMap = new ConcurrentHashMap<>();
 
     @PostConstruct
     public void initializeClientPool() {
@@ -111,5 +112,23 @@ public class DocumentService {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public void releaseResources(String sessionId) {
+        // 1. Remove the session from the map and get the associated client
+        SearchingClientParallel client = clientMap.remove(sessionId);
+
+        if (client != null) {
+            System.out.println("Releasing resources for session: " + sessionId);
+
+            // 2. You need an 'abort' or 'stop' method inside SearchingClientParallel
+            // This should signal the internal threads of that client to stop.
+            client.abort();
+
+            // 3. Clean up any phase data leftover in the client
+            client.cleanUpPhaseData(1);
+            client.cleanUpPhaseData(2);
+            client.cleanUpPhaseData(3);
+        }
     }
 }

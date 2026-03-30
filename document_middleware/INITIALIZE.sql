@@ -1,3 +1,5 @@
+create database docstar;
+
 use docstar;
 
 CREATE TABLE `admin` (
@@ -23,6 +25,13 @@ CREATE TABLE `client` (
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `document` (
+  `id` bigint NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `upload_time` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 insert into client values(1, "123 Main Street, New York, NY","alice@gmail.com","Alice","alice", "1234567890","alice.user");
 insert into client values(2, "123 Main Street, New York, NY","bob@gmail.com","bob","bob", "1234567890","bob.user");
