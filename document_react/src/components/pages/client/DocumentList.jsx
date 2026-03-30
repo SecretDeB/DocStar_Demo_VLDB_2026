@@ -40,14 +40,14 @@ export default function DocumentList({
       setFetching(true);
       const fileID = fetchQueue[0];
       try {
-        const text = await fetchFile(fileID);
+        const { text, error } = await fetchFile(fileID);
         setDocuments((prev) => ({
           ...prev,
           [fileID]: {
             ...prev[fileID],
             fetched: true,
             loading: false,
-            error: null,
+            error: error,
             file: text,
           },
         }));

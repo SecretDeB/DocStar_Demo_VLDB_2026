@@ -25,11 +25,22 @@ export default function useFile() {
       }
     );
 
-    const { data } = await response.json();
+    let text = null;
+    let error = null;
 
-    const text = atob(data);
+    if (response.ok) {
+      const { data } = await response.json();
 
-    return text;
+      text = atob(data);
+
+    }
+
+    else {
+      const errorMsg = await response.json();
+      error = errorMsg.message;
+    }
+
+    return { text, error };
   }
 
   async function fetchFiles(fileIDs) {
