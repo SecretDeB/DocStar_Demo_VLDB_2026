@@ -1,4 +1,6 @@
-# Prerequisites
+# DocStar Demo
+
+## Prerequisites
 Before starting, ensure you have the following installed on your machine:
 
 ## Java Development Kit (JDK)
