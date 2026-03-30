@@ -1267,7 +1267,10 @@ public class SearchingClientParallel extends Thread {
                     sendToServer(new long[] { 0 }, (i + 1));
                 }
                 ret = true;
-                return "Client verification failed: The access rights returned by the servers is incorrect.";
+
+                throw new PrivacySearchException(
+                        "Client verification failed: The access rights returned by the servers is incorrect.",
+                        "ACCESS_RIGHTS_INCORRECT_BY_SERVER", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
@@ -1280,7 +1283,9 @@ public class SearchingClientParallel extends Thread {
                 sendToServer(new long[] { 0 }, (i + 1));
             }
             ret = true;
-            return "Client has no access on documents of keyword '" + searchKeyword + "'.";
+            throw new PrivacySearchException(
+                    "Client has no access on documents of keyword '" + searchKeyword + "'.",
+                    "CLIENT_ACCESS_DENIED", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         System.out.println("The index of keyword " + searchKeyword + " is " + (phase1Result + 1) + ".");
         return null;

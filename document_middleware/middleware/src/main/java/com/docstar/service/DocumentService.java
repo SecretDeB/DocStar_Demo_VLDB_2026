@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.docstar.middleware.SearchingClientParallel;
-import com.docstar.model.Client;
 import com.docstar.model.dto.DocumentDTO;
 import com.docstar.repository.ClientRepository;
 
